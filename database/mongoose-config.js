@@ -6,7 +6,9 @@ module.exports = {
     return mongoose
       .connect(process.env.MONGODB_URI, {
         useNewUrlParser: true,
-        useCreateIndex: true
+        useCreateIndex: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
       })
       .then(() => console.log('Mongoose Connected'))
       .catch(error =>
@@ -15,5 +17,5 @@ module.exports = {
   },
   disconnectMongoose(done) {
     mongoose.disconnect(done);
-  }
+  },
 };
