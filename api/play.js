@@ -4,7 +4,6 @@ const router = express.Router();
 const User = require('../models/User');
 const generateHints = require('../utils/generate-hints');
 const { ACTIVE } = require('../utils/constants').gameStatus;
-const { EASY, NORMAL, HARD } = require('../utils/constants').difficulty;
 
 /**
  * Starts the game
@@ -21,7 +20,7 @@ router.post('/', async (req, res) => {
     .split('\n')
     .join('');
 
-  const { userName } = req.body;
+  const { userName, difficulty } = req.body;
 
   // Initialize the new game
   const newGame = {
@@ -30,7 +29,7 @@ router.post('/', async (req, res) => {
     gameStatus: ACTIVE,
     hints: generateHints(randomNumber),
     hintsCount: 0,
-    difficulty: HARD.NAME,
+    difficulty,
     guesses: [],
   };
 
