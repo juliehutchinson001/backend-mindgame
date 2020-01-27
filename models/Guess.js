@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { CORRECT, INCORRECT, PARTIAL } = require('../utils/constants').feedback;
 
 // Sub-document
 const Guess = new mongoose.Schema({
@@ -8,7 +9,7 @@ const Guess = new mongoose.Schema({
   },
   feedback: {
     type: String,
-    enum: ['correct', 'incorrect', 'partial'],
+    enum: [CORRECT, INCORRECT, PARTIAL],
     required: true,
   },
 });

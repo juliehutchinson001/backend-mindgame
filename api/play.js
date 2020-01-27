@@ -3,38 +3,48 @@ const fetch = require('node-fetch');
 const router = express.Router();
 const User = require('../models/User');
 const generateHints = require('../utils/generate-hints');
+const { ACTIVE } = require('../utils/constants').gameStatus;
+const { EASY, NORMAL, HARD } = require('../utils/constants').difficulty;
 
 /**
- * @description Starts the game
- * @route GET api/play
+ * Starts the game
+ * `@route` POST api/play
  * @global Public
  */
 router.post('/', async (req, res) => {
   const URL =
     'https://www.random.org/integers/?num=4&min=0&max=7&col=1&base=10&format=plain&rnd=new';
   const data = await fetch(URL);
-  const randomNumber = await data.text();
+  const textData = await data.text();
+  const randomNumber = textData
+    .trim()
+    .split('\n')
+    .join('');
 
   const { userName } = req.body;
+
+  // Initialize the new game
   const newGame = {
     randomNumber,
     attempts: 10,
-    isGameWon: false,
+    gameStatus: ACTIVE,
     hints: generateHints(randomNumber),
     hintsCount: 0,
-    difficulty: 'normal',
+    difficulty: HARD.NAME,
     guesses: [],
   };
 
+  // Add a game to the user from the current session or create a new user
   User.findOneAndUpdate(
     { userName },
     { $push: { games: newGame } },
-    { upsert: true },
-    error => {
+    { new: true, upsert: true },
+    (error, game) => {
       if (error) {
         res.json({ error });
       }
-      res.json({ success: 'it worked' });
+
+      res.json({ game });
     }
   );
 });

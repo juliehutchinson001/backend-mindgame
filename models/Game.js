@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Guess = require('./Guess');
+const { EASY, NORMAL, HARD } = require('../utils/constants').difficulty;
+const { ACTIVE, WON, LOST } = require('../utils/constants').gameStatus;
 
 // Sub-document
 const Game = new mongoose.Schema(
@@ -12,8 +14,9 @@ const Game = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    isGameWon: {
-      type: Boolean,
+    gameStatus: {
+      type: String,
+      enum: [ACTIVE, WON, LOST],
       required: true,
     },
     hints: {
@@ -26,7 +29,7 @@ const Game = new mongoose.Schema(
     },
     difficulty: {
       type: String,
-      enum: ['easy', 'normal', 'hard'],
+      enum: [EASY.NAME, NORMAL.NAME, HARD.NAME],
       required: true,
     },
     guesses: [Guess],
@@ -37,4 +40,3 @@ const Game = new mongoose.Schema(
 );
 
 module.exports = Game;
-// module.exports = { Game: mongoose.model('games', GameSchema) };
