@@ -4,10 +4,7 @@ const secretKeys = require('./keys');
 
 // Sets env variables when not in production
 module.exports = () => {
-  if (
-    currentEnvironment === 'development' ||
-    currentEnvironment === 'production'
-  ) {
+  if (currentEnvironment === 'development') {
     const environmentVars = secretKeys[currentEnvironment];
 
     Object.keys(environmentVars).forEach(envVar => {

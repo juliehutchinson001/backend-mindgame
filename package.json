@@ -2,7 +2,11 @@
   "name": "backend-mindgame",
   "version": "1.0.0",
   "description": "This is a deployed configuration of a server backend for the mind-game challenge",
-  "main": "index.js",
+  "main": "server.js",
+  "engines": {
+    "npm": "6.9.0",
+    "node": "10.15.1"
+  },
   "scripts": {
     "test": "jest --watch --expand --verbose",
     "start": "node server.js",
