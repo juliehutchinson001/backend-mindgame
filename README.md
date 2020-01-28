@@ -17,7 +17,7 @@ Hosted server for the web application Mastermind Game built with:
 - `Heroku` -
 
 ## Features
-- Creates annonimous Users
+- Creates an anonymous User
 - Keeps tracks of the game's level
 - Keeps tracks of the remaining time per game
 - Keeps tracks of the current session guesses

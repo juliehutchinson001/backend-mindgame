@@ -27,8 +27,8 @@ const getGameStatus = (
       newGameStatus = WON;
     } else {
       // check if one of the digits were correct
-      for (let digit of guess) {
-        if (randomNumber.includes(digit)) {
+      for (let i = 0; i < guess.length; i++) {
+        if (randomNumber[i] === guess[i]) {
           isGuessPartial = true;
           break;
         }
