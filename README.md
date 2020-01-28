@@ -24,33 +24,34 @@ Hosted server for the web application Mastermind Game built with:
 - Keeps tracks of the game status `[WON, ACTIVE, LOST]`
 - Keeps tracks of the guesses feedback in the game `[CORRECT, PARTIAL, INCORRECT]`
 
-## Getting Started
+## Important Info
 
-This server is hosted on [heroku](https://jshutchinson-mastermind-game.herokuapp.com/)
+- Breakdown of challenge while planning the approach on [how to create the server.](https://docs.google.com/document/d/10Q8mYm2J6QRK3HxkxIMF93k35UUxlQJi0dHBa1vhA3Y/edit?usp=sharing)
+- This server is hosted on [heroku.](https://jshutchinson-mastermind-game.herokuapp.com/)
 
 ## Application Structure
 
 ```
 app
 ├── utils
-│   └── constants.js
-│   └── generate-hints.js
-│   └── get-game-statusjs
-│   └── get-time-left.js
+│   └── constants.js ── makes constant variables available througout this app
+│   └── generate-hints.js ── sends a new hint
+│   └── get-game-statusjs ── computes the new game status and returns the new feedback and game status
+│   └── get-time-left.js ── computes the remaining time left
 ├── database
-│   └── mongoose-config.js
+│   └── mongoose-config.js ── configures mongoose
 ├── config
-│   └── environment.js
+│   └── environment.js ── sets the env vars if on development
 │   └── keys.js ── env keys to connect to the db
 ├── models
 │   └── User.js ── Collection defining the anonymous users
 │   └── Game.js ── Sub-document of User
 │   └── Guess.js ── Sub-document of Game
 ├── api
-│   └── difficulty.js ──
-│   └── guess.js
-│   └── hint.js
-│   └── play.js
+│   └── difficulty.js ── sends any new difficulty level to the db
+│   └── guess.js ── sends any new guess for the current game to the db
+│   └── hint.js ── sends any new hint from the db and reduces the hint count
+│   └── play.js ── sends a new game to the db / client
 └── app.js
 └── server.js
 ```
