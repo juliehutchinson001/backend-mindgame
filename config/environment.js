@@ -1,10 +1,13 @@
 // Setup environment
-const currentEnvironment = process.env.NODE_ENV || "development";
-const secretKeys = require("./keys");
+const currentEnvironment = process.env.NODE_ENV || 'development';
+const secretKeys = require('./keys');
 
 // Sets env variables when not in production
 module.exports = () => {
-  if (currentEnvironment === "development") {
+  if (
+    currentEnvironment === 'development' ||
+    currentEnvironment === 'production'
+  ) {
     const environmentVars = secretKeys[currentEnvironment];
 
     Object.keys(environmentVars).forEach(envVar => {
