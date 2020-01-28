@@ -11,18 +11,18 @@ By Julie Hutchinson
 Hosted server for the web application Mastermind Game built with:
 
 - `MongoDB Atlas` - A document-oriented, No-SQL database used to store the application data.
-- `Mongoose` - .
+- `Mongoose` - Middleware to query data easily to mongodb.
 - `ExpressJS` - fast node.js network app framework.
 - `nodeJS` - A JavaScript runtime built on Chrome's V8 JavaScript engine.
-- `Heroku` -
+- `Heroku` - Platform to deploy your app.
 
 ## Features
-- Creates an anonymous User
-- Keeps tracks of the game's level
+- Creates an anonymous user
+- Keeps tracks of the current game's level
 - Keeps tracks of the remaining time per game
-- Keeps tracks of the current session guesses
+- Keeps tracks of the current game's guesses
 - Keeps tracks of the game status `[WON, ACTIVE, LOST]`
-- Keeps tracks of the feedback of the current session `[CORRECT, PARTIAL, INCORRECT]`
+- Keeps tracks of the guesses feedback in the game `[CORRECT, PARTIAL, INCORRECT]`
 
 ## Getting Started
 
@@ -43,7 +43,7 @@ app
 │   └── environment.js
 │   └── keys.js ── env keys to connect to the db
 ├── models
-│   └── User.js ── Collection defining the anonimous users
+│   └── User.js ── Collection defining the anonymous users
 │   └── Game.js ── Sub-document of User
 │   └── Guess.js ── Sub-document of Game
 ├── api
@@ -57,8 +57,8 @@ app
 
 - <b>server.js</b> - The application entry point. This file defines the express server and connects it to MongoDB Atlas using mongoose.
 - <b>app.js</b> - This file defines the api routes.
-- <b>config/ </b> - It contains configuration of the development environment (could be extended for testing purposes).
-- <b>database/ </b> - It contains configuration for mongoose (could be extended for testing purposes).
+- <b>config/ </b> - It contains configuration of the development environment.
+- <b>database/ </b> - It contains configuration for mongoose.
 - <b>models/</b> - It contains the Schema definitions of the Mongoose Models.
 - <b>api/ </b> - It contains the route definitions of the API.
 
