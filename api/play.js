@@ -38,12 +38,13 @@ router.post('/', async (req, res) => {
     { userName },
     { $push: { games: newGame } },
     { new: true, upsert: true },
-    (error, game) => {
+    (error, user) => {
       if (error) {
         res.json({ error });
       }
 
-      res.json({ game });
+      const latestGame = user.games[user.games.length - 1];
+      res.json(latestGame);
     }
   );
 });
