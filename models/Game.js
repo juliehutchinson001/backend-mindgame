@@ -32,6 +32,10 @@ const Game = new mongoose.Schema(
       enum: [EASY.NAME, NORMAL.NAME, HARD.NAME],
       required: true,
     },
+    gameStarted: {
+      type: Date,
+      required: true,
+    },
     guesses: [Guess],
   },
   {

@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
     .split('\n')
     .join('');
 
-  const { userName, difficulty } = req.body;
+  const { userName, difficulty, gameStarted } = req.body;
 
   // Initialize the new game
   const newGame = {
@@ -30,6 +30,7 @@ router.post('/', async (req, res) => {
     hints: generateHints(randomNumber),
     hintsCount: 0,
     difficulty,
+    gameStarted,
     guesses: [],
   };
 
@@ -37,7 +38,7 @@ router.post('/', async (req, res) => {
   User.findOneAndUpdate(
     { userName },
     { $push: { games: newGame } },
-    { new: true, upsert: true },
+    { new: true, upsert: true, runValidators: true },
     (error, user) => {
       if (error) {
         res.json({ error });

@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
         randomNumber,
         gameStatus,
         difficulty,
-        createdAt,
+        gameStarted,
       } = data.games[LAST_GAME];
 
       if (gameStatus === ACTIVE) {
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
           guess,
           randomNumber,
           attempts,
-          createdAt,
+          gameStarted,
           difficulty
         );
 
