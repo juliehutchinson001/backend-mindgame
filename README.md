@@ -27,7 +27,7 @@ Hosted server for the web application Mastermind Game built with:
 ## Important Info
 
 - Breakdown of challenge while planning the approach on [how to create the server.](https://docs.google.com/document/d/10Q8mYm2J6QRK3HxkxIMF93k35UUxlQJi0dHBa1vhA3Y/edit?usp=sharing)
-- This server is hosted on [heroku.](https://jshutchinson-mastermind-game.herokuapp.com/)
+- This server is hosted on [heroku to make requests based on the app.js routes.](https://jshutchinson-mastermind-game.herokuapp.com/)
 
 ## Application Structure
 
