@@ -8,8 +8,11 @@ const difficulty = require('./api/difficulty');
 
 // Setup configuration
 enviromentalVars();
+const corsOptions = {
+  origin: '*',
+};
 const app = express();
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes
